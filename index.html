@@ -29,7 +29,7 @@
     }
     </style>
     <script>
-      var PageViewsLine  = $('#UserRegistration').MPChart({chartType: 'line'});
+      var UserRegBar  = $('#UserRegistration').MPChart({chartType: 'bar'});
       var TopContentBar  = $('#TopContent').MPChart({chartType: 'bar'});
       var ContentbyInitialReferrerBar  = $('#ContentbyInitialReferrer').MPChart({chartType: 'bar'});
      
@@ -65,7 +65,7 @@
         
         MP.api.segment('User Registration', 'mode', segmentPageViewsParams).done(function(results) {
             
-            PageViewsLine.MPChart('setData', results)
+            UserRegBar.MPChart('setData', results)
         });
         
          //Purchase by Card Type
