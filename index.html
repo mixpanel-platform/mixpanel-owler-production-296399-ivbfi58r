@@ -9,7 +9,7 @@
   <body class="mixpanel-platform-body">
     
     <div class="mixpanel-platform-section">
-      <h1>Item Detail Page Viewed</h1>
+      <h1>User Registration by Mode (Past 14 Days)</h1>
       <div style="clear: both;"></div>
       <div id="UserRegistration" class="report"></div>
       <h1>Purchase by Card Type</h1>
@@ -61,7 +61,7 @@
       runQuery();
        function runQuery() {
         
-        //Item Detail Page Viewed
+        //User Registration by Mode (Past 14 Days)
         
         MP.api.segment('User Registration', 'Mode', segmentPageViewsParams).done(function(results) {
             
