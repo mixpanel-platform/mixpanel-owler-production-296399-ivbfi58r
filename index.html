@@ -87,87 +87,6 @@
             unit: 'week',
       };
       
-      var segmentContentbyInitialReferrerParams = {
-            from: moment().subtract('30', 'days'),
-            to: moment(),
-            limit: '10',
-            type: 'general',
-            unit: 'day',
-            where: 'properties["mp_country_code"] == "US"' ,
-      };
-      
-      var segmentContentbyInitialReferrerParams = {
-            from: moment().subtract('30', 'days'),
-            to: moment(),
-            limit: '10',
-            type: 'general',
-            unit: 'day',
-            where: 'properties["mp_country_code"] == "US"' ,
-      };
-      
-      var segmentContentbyInitialReferrerParams = {
-            from: moment().subtract('30', 'days'),
-            to: moment(),
-            limit: '10',
-            type: 'general',
-            unit: 'day',
-            where: 'properties["mp_country_code"] == "US"' ,
-      };
-      
-      var segmentContentbyInitialReferrerParams = {
-            from: moment().subtract('30', 'days'),
-            to: moment(),
-            limit: '10',
-            type: 'general',
-            unit: 'day',
-            where: 'properties["mp_country_code"] == "US"' ,
-      };
-      
-      var segmentContentbyInitialReferrerParams = {
-            from: moment().subtract('30', 'days'),
-            to: moment(),
-            limit: '10',
-            type: 'general',
-            unit: 'day',
-            where: 'properties["mp_country_code"] == "US"' ,
-      };
-      
-      var segmentContentbyInitialReferrerParams = {
-            from: moment().subtract('30', 'days'),
-            to: moment(),
-            limit: '10',
-            type: 'general',
-            unit: 'day',
-            where: 'properties["mp_country_code"] == "US"' ,
-      };
-      
-      var segmentContentbyInitialReferrerParams = {
-            from: moment().subtract('30', 'days'),
-            to: moment(),
-            limit: '10',
-            type: 'general',
-            unit: 'day',
-            where: 'properties["mp_country_code"] == "US"' ,
-      };
-      
-      var segmentContentbyInitialReferrerParams = {
-            from: moment().subtract('30', 'days'),
-            to: moment(),
-            limit: '10',
-            type: 'general',
-            unit: 'day',
-            where: 'properties["mp_country_code"] == "US"' ,
-      };
-      
-      var segmentContentbyInitialReferrerParams = {
-            from: moment().subtract('30', 'days'),
-            to: moment(),
-            limit: '10',
-            type: 'general',
-            unit: 'day',
-            where: 'properties["mp_country_code"] == "US"' ,
-      };
-      
       runQuery();
        function runQuery() {
         
@@ -194,21 +113,21 @@
         
         //Daily Active Users - Total
         
-        MP.api.segment('Overall Active User', 'campaign', segmentDAUUniqueParams).done(function(results) {
+        MP.api.segment('Overall Active User', 'campaign', segmentDAUTotalParams).done(function(results) {
             
             DAUTotalLine.MPChart('setData', results);
         });
         
         //Weekly Active Users - Unique
         
-        MP.api.segment('Overall Active User', 'campaign', segmentDAUUniqueParams).done(function(results) {
+        MP.api.segment('Overall Active User', 'campaign', segmentWAUUniqueParams).done(function(results) {
             
             WAUUniqueLine.MPChart('setData', results);
         });
         
         //Weekly Active Users - Total
         
-        MP.api.segment('Overall Active User', 'campaign', segmentDAUUniqueParams).done(function(results) {
+        MP.api.segment('Overall Active User', 'campaign', segmentWAUTotalParams).done(function(results) {
             
             WAUTotalLine.MPChart('setData', results);
         });
