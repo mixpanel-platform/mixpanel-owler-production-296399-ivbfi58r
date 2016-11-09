@@ -205,7 +205,7 @@
         
         //Daily Active Users - Unique
         
-        MP.api.segment('Overall Active User', 'Campaign', segmentDAUUniqueParams).done(function(results) {
+        MP.api.segment('Overall Active User', 'campaign', segmentDAUUniqueParams).done(function(results) {
             
             DAUUniqueLine.MPChart('setData', results);
         });
