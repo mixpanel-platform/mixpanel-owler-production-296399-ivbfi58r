@@ -9,7 +9,7 @@
   <body class="mixpanel-platform-body">
     
     <div class="mixpanel-platform-section">
-      <h1>User Registration by Mode (Past 14 Days)</h1>
+      <h1>Daily User Registration</h1>
       <div style="clear: both;"></div>
       <div id="UserRegistration" class="report"></div>
       <h1>Purchase by Card Type</h1>
@@ -29,7 +29,7 @@
     }
     </style>
     <script>
-      var UserRegBar  = $('#UserRegistration').MPChart({chartType: 'bar'});
+      var UserRegLine  = $('#UserRegistration').MPChart({chartType: 'line'});
       var TopContentBar  = $('#TopContent').MPChart({chartType: 'bar'});
       var ContentbyInitialReferrerBar  = $('#ContentbyInitialReferrer').MPChart({chartType: 'bar'});
      
@@ -61,11 +61,11 @@
       runQuery();
        function runQuery() {
         
-        //User Registration by Mode (Past 14 Days)
+        //Daily User Registration
         
         MP.api.segment('User Registration', 'Mode', segmentPageViewsParams).done(function(results) {
             
-            UserRegBar.MPChart('setData', results)
+            UserRegLine.MPChart('setData', results)
         });
         
          //Purchase by Card Type
