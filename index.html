@@ -45,6 +45,12 @@
       <h1>Weekly Event Page Views</h1>
       <div style="clear: both;"></div>
       <div id="WEvent" class="report"></div>
+      <h1>Daily Dashboard Views</h1>
+      <div style="clear: both;"></div>
+      <div id="DDashboard" class="report"></div>
+      <h1>Weekly Dashboard Views</h1>
+      <div style="clear: both;"></div>
+      <div id="WDashboard" class="report"></div>
      </div>
     <style>
     h1 {
@@ -68,6 +74,8 @@
       var WCompanyProfileLine  = $('#WCompanyProfile').MPChart({chartType: 'line'});
       var DEventLine  = $('#DEvent').MPChart({chartType: 'line'});
       var WEventLine  = $('#WEvent').MPChart({chartType: 'line'});
+      var DDashboardLine  = $('#DDashboard').MPChart({chartType: 'line'});
+      var WDashboardLine  = $('#WDashboard').MPChart({chartType: 'line'});
      
       var segmentUserRegParams = {
             from: moment().subtract('14', 'days'),
@@ -147,6 +155,20 @@
       };
       
          var segmentWEventParams = {
+            from: moment().subtract('112', 'days'),
+            to: moment(),
+            type: 'general',
+            unit: 'week',
+      };
+      
+          var segmentDDashboardParams = {
+            from: moment().subtract('14', 'days'),
+            to: moment(),
+            type: 'general',
+            unit: 'day',
+      };
+      
+         var segmentWDashboardParams = {
             from: moment().subtract('112', 'days'),
             to: moment(),
             type: 'general',
@@ -239,6 +261,21 @@
             
             WEventLine.MPChart('setData', results);
         });
+        
+         //Daily Dashboard Views
+        
+        MP.api.segment('Dashboard viewed', segmentDDashboardParams).done(function(results) {
+            
+            DDashboardLine.MPChart('setData', results);
+        });
+        
+         //Weekly Dashboard Views
+        
+        MP.api.segment('Dashboard viewed', segmentWDashboardParams).done(function(results) {
+            
+            WDashboardLine.MPChart('setData', results);
+        });
+        
         
         }
 
