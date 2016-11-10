@@ -228,14 +228,14 @@
         
          //Daily Event Page Views
         
-        MP.api.segment('EP Page Viewed', segmentDEventParams).done(function(results) {
+        MP.api.segment('Events Page Viewed', segmentDEventParams).done(function(results) {
             
             DCompanyProfileLine.MPChart('setData', results);
         });
         
          //Weekly Event Page Views
         
-        MP.api.segment('EP Page Viewed', segmentWEventParams).done(function(results) {
+        MP.api.segment('Events Page Viewed', segmentWEventParams).done(function(results) {
             
             WCompanyProfileLine.MPChart('setData', results);
         });
