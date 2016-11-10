@@ -33,6 +33,12 @@
       <h1>Weekly Data Card Responses</h1>
       <div style="clear: both;"></div>
       <div id="WDataCard" class="report"></div>
+      <h1>Daily Company Profile Views</h1>
+      <div style="clear: both;"></div>
+      <div id="DCompanyProfile" class="report"></div>
+      <h1>Weekly Company Profile Views</h1>
+      <div style="clear: both;"></div>
+      <div id="WCompanyProfile" class="report"></div>
      </div>
     <style>
     h1 {
@@ -52,6 +58,8 @@
       var WAUTotalLine  = $('#WAUTotal').MPChart({chartType: 'line'});
       var DDataCardLine  = $('#DDataCard').MPChart({chartType: 'line'});
       var WDataCardLine  = $('#WDataCard').MPChart({chartType: 'line'});
+      var DCompanyProfileLine  = $('#DCompanyProfile').MPChart({chartType: 'line'});
+      var WCompanyProfileLine  = $('#WCompanyProfile').MPChart({chartType: 'line'});
      
       var segmentUserRegParams = {
             from: moment().subtract('14', 'days'),
@@ -103,6 +111,20 @@
       };
       
          var segmentWDataCardParams = {
+            from: moment().subtract('112', 'days'),
+            to: moment(),
+            type: 'general',
+            unit: 'week',
+      };
+      
+           var segmentDCompanyProfileParams = {
+            from: moment().subtract('14', 'days'),
+            to: moment(),
+            type: 'general',
+            unit: 'day',
+      };
+      
+         var segmentWCompanyProfileParams = {
             from: moment().subtract('112', 'days'),
             to: moment(),
             type: 'general',
@@ -166,6 +188,20 @@
         MP.api.segment('Data Card Response', segmentWDataCardParams).done(function(results) {
             
             WDataCardLine.MPChart('setData', results);
+        });
+        
+         //Daily Company Profile Views
+        
+        MP.api.segment('Company Profile Viewed', segmentDCompanyProfileParams).done(function(results) {
+            
+            DCompanyProfileLine.MPChart('setData', results);
+        });
+        
+         //Weekly Company Profile Views
+        
+        MP.api.segment('Company Profile Viewed', segmentWCompanyProfileParams).done(function(results) {
+            
+            WCompanyProfileLine.MPChart('setData', results);
         });
         
         }
