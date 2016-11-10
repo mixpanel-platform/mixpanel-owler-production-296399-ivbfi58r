@@ -39,6 +39,12 @@
       <h1>Weekly Company Profile Views</h1>
       <div style="clear: both;"></div>
       <div id="WCompanyProfile" class="report"></div>
+      <h1>Daily Event Page Views</h1>
+      <div style="clear: both;"></div>
+      <div id="DEvent" class="report"></div>
+      <h1>Weekly Event Page Views</h1>
+      <div style="clear: both;"></div>
+      <div id="WEvent" class="report"></div>
      </div>
     <style>
     h1 {
@@ -60,6 +66,8 @@
       var WDataCardLine  = $('#WDataCard').MPChart({chartType: 'line'});
       var DCompanyProfileLine  = $('#DCompanyProfile').MPChart({chartType: 'line'});
       var WCompanyProfileLine  = $('#WCompanyProfile').MPChart({chartType: 'line'});
+      var DEventLine  = $('#DEvent').MPChart({chartType: 'line'});
+      var WEventLine  = $('#WEvent').MPChart({chartType: 'line'});
      
       var segmentUserRegParams = {
             from: moment().subtract('14', 'days'),
@@ -125,6 +133,20 @@
       };
       
          var segmentWCompanyProfileParams = {
+            from: moment().subtract('112', 'days'),
+            to: moment(),
+            type: 'general',
+            unit: 'week',
+      };
+      
+        var segmentDEventParams = {
+            from: moment().subtract('14', 'days'),
+            to: moment(),
+            type: 'general',
+            unit: 'day',
+      };
+      
+         var segmentWEventParams = {
             from: moment().subtract('112', 'days'),
             to: moment(),
             type: 'general',
@@ -200,6 +222,20 @@
          //Weekly Company Profile Views
         
         MP.api.segment('Company Profile Viewed', segmentWCompanyProfileParams).done(function(results) {
+            
+            WCompanyProfileLine.MPChart('setData', results);
+        });
+        
+         //Daily Event Page Views
+        
+        MP.api.segment('EP Page Viewed', segmentDEventParams).done(function(results) {
+            
+            DCompanyProfileLine.MPChart('setData', results);
+        });
+        
+         //Weekly Event Page Views
+        
+        MP.api.segment('EP Page Viewed', segmentWEventParams).done(function(results) {
             
             WCompanyProfileLine.MPChart('setData', results);
         });
