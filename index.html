@@ -51,6 +51,12 @@
       <h1>Weekly Dashboard Views</h1>
       <div style="clear: both;"></div>
       <div id="WDashboard" class="report"></div>
+      <h1>Daily CG Edits</h1>
+      <div style="clear: both;"></div>
+      <div id="DDataEdit" class="report"></div>
+      <h1>Weekly CG Edits</h1>
+      <div style="clear: both;"></div>
+      <div id="WDataEdit" class="report"></div>
      </div>
     <style>
     h1 {
@@ -76,6 +82,8 @@
       var WEventLine  = $('#WEvent').MPChart({chartType: 'line'});
       var DDashboardLine  = $('#DDashboard').MPChart({chartType: 'line'});
       var WDashboardLine  = $('#WDashboard').MPChart({chartType: 'line'});
+      var DDataEditLine  = $('#DDataEdit').MPChart({chartType: 'line'});
+      var WDataEditLine  = $('#WDataEdit').MPChart({chartType: 'line'});
      
       var segmentUserRegParams = {
             from: moment().subtract('14', 'days'),
@@ -169,6 +177,20 @@
       };
       
          var segmentWDashboardParams = {
+            from: moment().subtract('112', 'days'),
+            to: moment(),
+            type: 'general',
+            unit: 'week',
+      };
+      
+         var segmentDDataEditParams = {
+            from: moment().subtract('28', 'days'),
+            to: moment(),
+            type: 'general',
+            unit: 'day',
+      };
+      
+         var segmentWDataEditParams = {
             from: moment().subtract('112', 'days'),
             to: moment(),
             type: 'general',
@@ -274,6 +296,20 @@
         MP.api.segment('Dashboard viewed', segmentWDashboardParams).done(function(results) {
             
             WDashboardLine.MPChart('setData', results);
+        });
+        
+        //Daily CG Edits
+        
+        MP.api.segment('Data Edit', segmentDDataEditParams).done(function(results) {
+            
+            DDataEditLine.MPChart('setData', results);
+        });
+        
+         //Weekly CG Edits
+        
+        MP.api.segment('Data Edit', segmentWDataEditParams).done(function(results) {
+            
+            WDataEditLine.MPChart('setData', results);
         });
         
         
